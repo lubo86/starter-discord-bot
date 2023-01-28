@@ -77,12 +77,9 @@ app.post('/interactions', verifyKeyMiddleware(PUBLIC_KEY), async (req, res) => {
       });
     }
   }else{
-     console.log(interaction.type) 
+     console.log(interaction.type);
   }
-
 });
-
-app.onMessage = async function onMessage(message) {
 
 app.get('/register_commands', async (req,res) =>{
   let slash_commands = [
