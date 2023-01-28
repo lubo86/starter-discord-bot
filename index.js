@@ -42,6 +42,16 @@ app.post('/interactions', verifyKeyMiddleware(PUBLIC_KEY), async (req, res) => {
         },
       });
     }
+	  
+    if(interaction.data.name == 'test'){
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          content: `Hier kannst du deine **Hobbys** auswählen und zeigen was dich sonst interessiert.`,
+        },
+      });
+    }
+
 
     if(interaction.data.name == 'dm'){
       // https://discord.com/developers/docs/resources/user#create-dm
@@ -81,6 +91,11 @@ app.get('/register_commands', async (req,res) =>{
     },
     {
       "name": "dm",
+      "description": "sends user a DM",
+      "options": []
+    },
+    {
+      "name": "test",
       "description": "sends user a DM",
       "options": []
     }
